@@ -2071,8 +2071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc75f90e1f09cf4db3712492b240e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 50
-  jump: 200
+  move: 150
+  jump: 220
   maxSpeed: 3
   grounded: 0
 --- !u!61 &1223998652

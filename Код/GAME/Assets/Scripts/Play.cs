@@ -28,7 +28,7 @@ public class Play : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
         //jump
-        if (Input.GetButtonDown("Jump") && grounded == true)
+        if (Input.GetButtonDown("Jump") && grounded)
         {
             pp.AddForce(Vector2.up * jump);
         }
@@ -36,6 +36,16 @@ public class Play : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 easyMove = pp.velocity;
+        easyMove.y = pp.velocity.y;
+        easyMove.z = 0.0f;
+        easyMove.x = 0.1f;
+
+        if (grounded)
+        {
+            pp.velocity = easyMove;
+        }
+
         float h = Input.GetAxis("Horizontal");//+-1
         pp.AddForce(Vector2.right * move * h);//добавляет возможность передвижения вправо\влево
         //Ограничение скорости
