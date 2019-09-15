@@ -25,6 +25,8 @@ public class Play : MonoBehaviour
     public float groundCheckRadius;
     public float wallCheckDistance;
     public float wallSlideSpeed;
+    public float health = 100f;
+    public int fallBoundary = -20; //граница падения по оси Y
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -48,6 +50,7 @@ public class Play : MonoBehaviour
         UpdateAnimations();
         CheckIfCanJump();
         CheckIfWallSliding();
+        IfFellDown();
     }
 
     private void FixedUpdate()
@@ -164,5 +167,19 @@ public class Play : MonoBehaviour
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
 
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
+    }
+
+    public void DamagePalyer(float damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            GameMaster.KillPlayer(this);
+        }
+    }
+
+    private void IfFellDown()
+    {
+        if (transform.position.y <= fallBoundary) DamagePalyer(health);
     }
 }
