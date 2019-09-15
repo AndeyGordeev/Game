@@ -4,69 +4,82 @@ using UnityEngine;
 
 public class BearFollower : MonoBehaviour
 {
-    private Transform target;
-    private bool isFacingRight;
-    private Rigidbody2D rigidBody;
+    private float movementInputDirection;
+
     private int amountOfJumpsLeft;
-    private bool canJump = true;
+
+    private bool isFacingRight = true;
+    private bool isWalking;
     private bool isGrounded;
+    private bool isTouchingWall;
+    private bool isWallSliding;
+    private bool canJump;
+
+    private Rigidbody2D rb;
     private Animator anim;
 
-    public float followSpeed;
-    public float followDistance;
-    public float jumpForce;
     public int amountOfJumps = 1;
-    public Transform groundCheck;
+
+    public float movementSpeed = 10.0f;
+    public float jumpForce = 16.0f;
     public float groundCheckRadius;
+    public float wallCheckDistance;
+    public float wallSlideSpeed;
+    public float health = 100f;
+    public int fallBoundary = -20; //граница падения по оси Y
+
+    public Transform groundCheck;
+    public Transform wallCheck;
+
     public LayerMask whatIsGround;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        rigidBody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        isFacingRight = true;
         amountOfJumpsLeft = amountOfJumps;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) > followDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, followSpeed * Time.deltaTime);
-        }
-        if ((!isFacingRight && transform.position.x < target.position.x) || (isFacingRight && transform.position.x > target.position.x)) {
-            Flip();
-        }
-        if (Input.GetButtonDown("Jump")) {
-            Jump();
-        }
-        CheckIfCanJump();
+        CheckInput();
+        CheckMovementDirection();
         UpdateAnimations();
+        CheckIfCanJump();
+        CheckIfWallSliding();
+        IfFellDown();
     }
 
     private void FixedUpdate()
     {
+        ApplyMovement();
         CheckSurrounding();
+    }
+
+    private void CheckIfWallSliding()
+    {
+        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        {
+            isWallSliding = true;
+        }
+        else
+        {
+            isWallSliding = false;
+        }
     }
 
     private void CheckSurrounding()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-    }
 
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector2 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+        isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
     }
 
     private void CheckIfCanJump()
     {
-        if (isGrounded && rigidBody.velocity.y <= 0)
+        if (isGrounded && rb.velocity.y <= 0)
         {
             amountOfJumpsLeft = amountOfJumps;
         }
@@ -81,22 +94,90 @@ public class BearFollower : MonoBehaviour
         }
     }
 
+    private void CheckMovementDirection()
+    {
+        if (isFacingRight && movementInputDirection < 0)
+        {
+            Flip();
+        }
+        else if (!isFacingRight && movementInputDirection > 0)
+        {
+            Flip();
+        }
+
+        if (rb.velocity.x != 0)
+        {
+            isWalking = true;
+        }
+        else
+        {
+            isWalking = false;
+        }
+    }
+
+    private void UpdateAnimations()
+    {
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    private void CheckInput()
+    {
+        movementInputDirection = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
     private void Jump()
     {
-        if(canJump)
+        if (canJump)
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             amountOfJumpsLeft--;
         }
+    }
+
+    private void ApplyMovement()
+    {
+        rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
+
+        if (isWallSliding)
+        {
+            if (rb.velocity.y < -wallSlideSpeed)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed);
+            }
+        }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
     }
-    
-    private void UpdateAnimations()
+
+    public void DamagePalyer(float damage)
     {
-        anim.SetBool("isGrounded", isGrounded);
+        health -= damage;
+        if (health <= 0)
+        {
+            GameMaster.KillBear(this);
+        }
+    }
+
+    private void IfFellDown()
+    {
+        if (transform.position.y <= fallBoundary) DamagePalyer(health);
     }
 }

@@ -14,6 +14,13 @@ public class GameMaster : MonoBehaviour
         gm.EndGame();
     }
 
+
+    public static void KillBear(BearFollower bear)
+    {
+        Destroy(bear);
+    }
+    
+
     private void Start()
     {
         if (gm == null)
