@@ -4,59 +4,165 @@ using UnityEngine;
 
 public class Play : MonoBehaviour
 {
-    public float move = 50f;
-    public float jump = 200f;
-    public float maxSpeed = 3;
-    
-    public bool grounded;
+    private float movementInputDirection;
 
-    private Rigidbody2D pp;
+    private int amountOfJumpsLeft;
 
+    private bool isFacingRight = true;
+    private bool isWalking;
+    private bool isGrounded;
+    private bool isTouchingWall;
+    private bool isWallSliding;
+    private bool canJump;
+
+    private Rigidbody2D rb;
+    private Animator anim;
+
+    public int amountOfJumps = 1;
+
+    public float movementSpeed = 10.0f;
+    public float jumpForce = 16.0f;
+    public float groundCheckRadius;
+    public float wallCheckDistance;
+    public float wallSlideSpeed;
+
+    public Transform groundCheck;
+    public Transform wallCheck;
+    public Transform light;
+
+    public LayerMask whatIsGround;
+
+    // Start is called before the first frame update
     void Start()
     {
-        pp = gameObject.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        amountOfJumpsLeft = amountOfJumps;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Horizontal") > 0.1f)
+        CheckInput();
+        CheckMovementDirection();
+        UpdateAnimations();
+        CheckIfCanJump();
+        CheckIfWallSliding();
+    }
+
+    private void FixedUpdate()
+    {
+        ApplyMovement();
+        CheckSurrounding();
+    }
+
+    private void CheckIfWallSliding()
+    {
+        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            isWallSliding = true;
         }
-        if (Input.GetAxis("Horizontal") < -0.1f)
+        else
         {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        //jump
-        if (Input.GetButtonDown("Jump") && grounded)
-        {
-            pp.AddForce(Vector2.up * jump);
+            isWallSliding = false;
         }
     }
 
-    void FixedUpdate()
+    private void CheckSurrounding()
     {
-        Vector3 easyMove = pp.velocity;
-        easyMove.y = pp.velocity.y;
-        easyMove.z = 0.0f;
-        easyMove.x = 0.1f;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
-        if (grounded)
+        isTouchingWall = Physics2D.Raycast(wallCheck.position, transform.right, wallCheckDistance, whatIsGround);
+    }
+
+    private void CheckIfCanJump()
+    {
+        if (isGrounded && rb.velocity.y <= 0)
         {
-            pp.velocity = easyMove;
+            amountOfJumpsLeft = amountOfJumps;
         }
 
-        float h = Input.GetAxis("Horizontal");//+-1
-        pp.AddForce(Vector2.right * move * h);//добавляет возможность передвижения вправо\влево
-        //Ограничение скорости
-        if (pp.velocity.x > maxSpeed)
+        if (amountOfJumpsLeft <= 0)
         {
-            pp.velocity = new Vector2(maxSpeed, pp.velocity.y);
+            canJump = false;
+        }
+        else
+        {
+            canJump = true;
+        }
+    }
+
+    private void CheckMovementDirection()
+    {
+        if (isFacingRight && movementInputDirection < 0)
+        {
+            Flip();
+        }
+        else if (!isFacingRight && movementInputDirection > 0)
+        {
+            Flip();
         }
 
-        if (pp.velocity.x < -maxSpeed)
+        if (rb.velocity.x != 0)
         {
-            pp.velocity = new Vector2(-maxSpeed, pp.velocity.y);
+            isWalking = true;
         }
+        else
+        {
+            isWalking = false;
+        }
+    }
+
+    private void UpdateAnimations()
+    {
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetFloat("yVelocity", rb.velocity.y);
+    }
+
+    private void CheckInput()
+    {
+        movementInputDirection = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        if (canJump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            amountOfJumpsLeft--;
+        }
+    }
+
+    private void ApplyMovement()
+    {
+        rb.velocity = new Vector2(movementSpeed * movementInputDirection, rb.velocity.y);
+
+        if (isWallSliding)
+        {
+            if (rb.velocity.y < -wallSlideSpeed)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, wallSlideSpeed);
+            }
+        }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
+        light.SetPositionAndRotation(new Vector3(light.position.x, light.position.y,light.position.z-4),new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)); //костыль ибо, при повороте персонажа без этого пропадает освещение
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
     }
 }
