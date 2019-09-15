@@ -10,4 +10,9 @@ public class GameMaster : MonoBehaviour
         Destroy(player);
     }
 
+    public static void KillEnemy(Enemy enemy)
+    {
+        Destroy(enemy);
+    }
+
 }

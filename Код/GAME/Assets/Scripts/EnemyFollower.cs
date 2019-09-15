@@ -8,6 +8,7 @@ public class EnemyFollower : MonoBehaviour
     public float speed;
     public GameObject tar;
     public float findingDist;
+    public float stopDist;
 
     private Transform target;
 
@@ -20,7 +21,11 @@ public class EnemyFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) <= findingDist)
+        float dist = Vector2.Distance(transform.position, target.position);
+        if (dist <= findingDist && dist > stopDist)
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else if (dist <= stopDist)
+            transform.position = Vector2.MoveTowards(transform.position, target.position, 0);
+
     }
 }
