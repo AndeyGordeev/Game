@@ -182,4 +182,13 @@ public class Play : MonoBehaviour
     {
         if (transform.position.y <= fallBoundary) DamagePalyer(health);
     }
+
+    private void OnTriggerEnter2D(Collider2D obj)
+    {
+        if (obj.gameObject.tag == "Coin")
+        {
+            GameMaster.Gm.Score++;
+            Destroy(obj.gameObject);
+        }
+    }
 }

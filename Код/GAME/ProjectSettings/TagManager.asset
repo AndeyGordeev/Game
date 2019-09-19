@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GM
   - Companion
+  - Coin
   layers:
   - Default
   - TransparentFX

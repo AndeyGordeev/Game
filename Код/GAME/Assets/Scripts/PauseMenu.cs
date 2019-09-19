@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject gameOverUI;
     public GameObject pauseMenuUI;
+    public GameObject scoreUI;
+    [SerializeField]
+    private Text scoreText;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +36,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        scoreUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
@@ -39,6 +44,8 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        scoreUI.SetActive(false);
+        scoreText.text = string.Format("score: {0}", GameMaster.Gm.Score);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;

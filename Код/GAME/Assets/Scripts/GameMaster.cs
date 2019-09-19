@@ -1,12 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
 
-    public static GameMaster gm;
+    private static GameMaster gm;
     public GameObject gameOverUI;
+    public GameObject scoreUI;
+    [SerializeField]
+    private GameObject coinPrefab;
+    [SerializeField]
+    private Text scoreText;
+    [SerializeField]
+    private Text gameOverScoreText;
+    private int score;
+
+    public GameObject CoinPrefab { get => coinPrefab; }
+    public int Score
+    { 
+        get
+        {
+            return score; 
+        }
+        set
+        {
+            scoreText.text = value.ToString(); 
+            this.score = value; 
+        } 
+    }
+    public static GameMaster Gm { get => gm; set => gm = value; }
 
     public static void KillPlayer(Play player)
     {
@@ -29,6 +53,8 @@ public class GameMaster : MonoBehaviour
 
     private void EndGame()
     {
+        scoreUI.SetActive(false);
+        gameOverScoreText.text = string.Format("score: {0}", score);
         gameOverUI.SetActive(true);
     }
 
