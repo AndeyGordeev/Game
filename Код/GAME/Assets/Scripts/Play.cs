@@ -158,8 +158,9 @@ public class Play : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-        light.SetPositionAndRotation(new Vector3(light.position.x, light.position.y,light.position.z-4),new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)); //костыль ибо, при повороте персонажа без этого пропадает освещение
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     private void OnDrawGizmos()
@@ -169,18 +170,19 @@ public class Play : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
     }
 
-    public void DamagePalyer(float damage)
+    public void DamagePlayer(float damage)
     {
         health -= damage;
         if(health <= 0)
         {
             GameMaster.KillPlayer(this);
+            GameMaster.Gm.LifeCount--;
         }
     }
 
     private void IfFellDown()
     {
-        if (transform.position.y <= fallBoundary) DamagePalyer(health);
+        if (transform.position.y <= fallBoundary) DamagePlayer(health);
     }
 
     private void OnTriggerEnter2D(Collider2D obj)
@@ -188,6 +190,11 @@ public class Play : MonoBehaviour
         if (obj.gameObject.tag == "Coin")
         {
             GameMaster.Gm.Score++;
+            Destroy(obj.gameObject);
+        }
+        if (obj.gameObject.tag == "ExtraLife")
+        {
+            GameMaster.Gm.LifeCount++;
             Destroy(obj.gameObject);
         }
     }
