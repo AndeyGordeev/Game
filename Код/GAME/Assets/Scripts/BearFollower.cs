@@ -33,12 +33,17 @@ public class BearFollower : MonoBehaviour
 
     public LayerMask whatIsGround;
 
+    public int curHealth;
+    public int maxHealth = 4;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
+
+        curHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -50,6 +55,7 @@ public class BearFollower : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         IfFellDown();
+        CheckIfDie();
     }
 
     private void FixedUpdate()
@@ -187,6 +193,23 @@ public class BearFollower : MonoBehaviour
         {
             GameMaster.Gm.Score++;
             Destroy(obj.gameObject);
+        }
+    }
+
+    private void Die()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    private void CheckIfDie()
+    {
+        if (curHealth > maxHealth)
+        {
+            curHealth = maxHealth;
+        }
+        if (curHealth <= 0)
+        {
+            Die();
         }
     }
 }
