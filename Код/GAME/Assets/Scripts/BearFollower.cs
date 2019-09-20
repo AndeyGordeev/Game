@@ -13,7 +13,8 @@ public class BearFollower : MonoBehaviour
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isWallSliding;
-    private bool canJump;
+    private bool canJump = true;
+    private bool movementBlock = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -50,18 +51,29 @@ public class BearFollower : MonoBehaviour
     void Update()
     {
         CheckInput();
-        CheckMovementDirection();
         UpdateAnimations();
-        CheckIfCanJump();
         CheckIfWallSliding();
         IfFellDown();
         CheckIfDie();
+        CheckVelocity();
+        if (!movementBlock)
+        {
+            CheckIfCanJump();
+            CheckMovementDirection();
+        }
     }
 
     private void FixedUpdate()
     {
-        ApplyMovement();
+        if (!movementBlock)
+        {
+            ApplyMovement();
+        }
         CheckSurrounding();
+        if (isGrounded && movementBlock)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
 
     private void CheckIfWallSliding()
@@ -76,6 +88,18 @@ public class BearFollower : MonoBehaviour
         }
     }
 
+    private void CheckVelocity()
+    {
+        if (Mathf.Abs(rb.velocity.x) < movementSpeed)
+        {
+            isWalking = false;
+        }
+        else
+        {
+            isWalking = true;
+        }
+    }
+
     private void CheckSurrounding()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
@@ -87,16 +111,12 @@ public class BearFollower : MonoBehaviour
     {
         if (isGrounded && rb.velocity.y <= 0)
         {
+            canJump = true;
             amountOfJumpsLeft = amountOfJumps;
         }
-
         if (amountOfJumpsLeft <= 0)
         {
             canJump = false;
-        }
-        else
-        {
-            canJump = true;
         }
     }
 
@@ -136,6 +156,18 @@ public class BearFollower : MonoBehaviour
         {
             Jump();
         }
+
+        if (Input.GetButtonDown("CompanionMovementBlock"))
+        {
+            if (movementBlock)
+            {
+                movementBlock = false;
+            }
+            else {
+                movementBlock = true;
+                canJump = false;
+            }
+        }
     }
 
     private void Jump()
@@ -173,7 +205,7 @@ public class BearFollower : MonoBehaviour
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
     }
 
-    public void DamagePalyer(float damage)
+    public void DamagePlayer(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -184,7 +216,7 @@ public class BearFollower : MonoBehaviour
 
     private void IfFellDown()
     {
-        if (transform.position.y <= fallBoundary) DamagePalyer(health);
+        if (transform.position.y <= fallBoundary) DamagePlayer(health);
     }
 
     private void OnTriggerEnter2D(Collider2D obj)

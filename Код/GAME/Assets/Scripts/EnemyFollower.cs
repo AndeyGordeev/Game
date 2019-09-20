@@ -13,19 +13,24 @@ public class EnemyFollower : MonoBehaviour
     private Transform target;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         target = tar.GetComponent<Transform>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        FindTarget();
         float dist = Vector2.Distance(transform.position, target.position);
         if (dist <= findingDist && dist > stopDist)
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         else if (dist <= stopDist)
             transform.position = Vector2.MoveTowards(transform.position, target.position, 0);
 
+    }
+    private void FindTarget()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 }
