@@ -195,7 +195,9 @@ public class BearFollower : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     private void OnDrawGizmos()
