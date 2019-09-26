@@ -5,10 +5,10 @@ using UnityEngine;
 public class BearFollower : MonoBehaviour
 {
     private float movementInputDirection;
+    private float attackTimer;
 
     private int amountOfJumpsLeft;
 
-    private bool isFacingRight = true;
     private bool isWalking;
     private bool isGrounded;
     private bool isTouchingWall;
@@ -18,10 +18,11 @@ public class BearFollower : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
-    private GameObject hud;
+    public GameObject hud;
 
     public int amountOfJumps = 1;
 
+    public bool isFacingRight = true;
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
@@ -29,9 +30,11 @@ public class BearFollower : MonoBehaviour
     public float wallSlideSpeed;
     public float health = 100f;
     public int fallBoundary = -20; //граница падения по оси Y
+    public bool isAttacking = false;
 
     public Transform groundCheck;
     public Transform wallCheck;
+    public GameObject attackHitBox;
 
     public LayerMask whatIsGround;
 
@@ -47,6 +50,7 @@ public class BearFollower : MonoBehaviour
         hud = GameObject.FindGameObjectWithTag("HUDbear");
         UpdateHealth();
         curHealth = maxHealth;
+        attackHitBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -62,6 +66,7 @@ public class BearFollower : MonoBehaviour
             CheckIfCanJump();
             CheckMovementDirection();
         }
+        Attack();
     }
 
     private void FixedUpdate()
@@ -147,6 +152,7 @@ public class BearFollower : MonoBehaviour
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.velocity.y);
+        anim.SetBool("isAttacking", isAttacking);
     }
 
     private void CheckInput()
@@ -236,4 +242,26 @@ public class BearFollower : MonoBehaviour
     {
         hud.GetComponent<Animator>().SetFloat("Health", health);
     }
+    
+    private void Attack()
+    {
+        if (Input.GetButtonDown("Fire1") && !isAttacking)
+        {
+            isAttacking = true;
+
+            int index = Random.Range(1, 4);
+            anim.Play("BearAttack" + index);
+
+            StartCoroutine(DoAttack());
+        }
+    }
+
+    IEnumerator DoAttack()
+    {
+        attackHitBox.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        attackHitBox.SetActive(false);
+        isAttacking = false;
+    }
+    
 }

@@ -6,7 +6,7 @@ public class EnemyFollower : MonoBehaviour
 {
 
     public float speed;
-    public GameObject tar;
+    public GameObject playerTarget;
     public float findingDist;
     public float stopDist;
 
@@ -15,7 +15,7 @@ public class EnemyFollower : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        target = tar.GetComponent<Transform>();
+        target = playerTarget.GetComponent<Transform>();
     }
 
     // Update is called once per frame

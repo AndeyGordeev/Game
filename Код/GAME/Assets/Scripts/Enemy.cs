@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public StatusIndicator statusIndicator;
     public int healthMax = 100;
     private int _healthCur = 100;
     public int healthCur
@@ -14,7 +15,6 @@ public class Enemy : MonoBehaviour
 
     private Play player;
     private BearFollower bear;
-    private StatusIndicator statusIndicator;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
             player.DamagePlayer(25f);
         }
 
-        if (collision.gameObject.tag.Equals("Companion"))
+        if (collision.gameObject.tag.Equals("Companion") && bear.isAttacking == false)
         {
             bear.DamagePlayer(25f);
         }

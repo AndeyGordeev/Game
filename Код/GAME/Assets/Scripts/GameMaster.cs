@@ -83,6 +83,8 @@ public class GameMaster : MonoBehaviour
         bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
         FindObjectOfType<BearFollower>().health = 100f;
         FindObjectOfType<BearFollower>().UpdateHealth();
+        FindObjectOfType<BearFollower>().isAttacking = false;
+        FindObjectOfType<BearFollower>().attackHitBox.SetActive(false);
     }
     private void Start()
     {
@@ -103,7 +105,7 @@ public class GameMaster : MonoBehaviour
 
     public static void KillEnemy(Enemy enemy)
     {
-        Destroy(enemy);
+        Destroy(enemy.gameObject);
     }
 
 }

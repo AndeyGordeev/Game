@@ -10,6 +10,7 @@ TagManager:
   - ExtraLife
   - HUDgirl
   - HUDbear
+  - Enemy
   layers:
   - Default
   - TransparentFX
