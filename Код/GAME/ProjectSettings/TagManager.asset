@@ -8,6 +8,8 @@ TagManager:
   - Companion
   - Coin
   - ExtraLife
+  - HUDgirl
+  - HUDbear
   layers:
   - Default
   - TransparentFX

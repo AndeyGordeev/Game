@@ -22,15 +22,18 @@ public class EnemyFollower : MonoBehaviour
     private void Update()
     {
         FindTarget();
-        float dist = Vector2.Distance(transform.position, target.position);
-        if (dist <= findingDist && dist > stopDist)
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        else if (dist <= stopDist)
-            transform.position = Vector2.MoveTowards(transform.position, target.position, 0);
-
+        if (target != null)
+        {
+            float dist = Vector2.Distance(transform.position, target.position);
+            if (dist <= findingDist && dist > stopDist)
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            else if (dist <= stopDist)
+                transform.position = Vector2.MoveTowards(transform.position, target.position, 0);
+        }
     }
     private void FindTarget()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        if (target != null)
+            target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 }

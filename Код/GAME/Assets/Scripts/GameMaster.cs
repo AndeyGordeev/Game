@@ -3,12 +3,13 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    public Transform player;
-    public Transform bearFollower;
+    public GameObject player;
+    public GameObject bearFollower;
     public Transform spawnPoint;
     private static GameMaster gm;
     public GameObject gameOverUI;
     public GameObject scoreUI;
+    public GameObject lifeUI;
     [SerializeField]
     private GameObject coinPrefab;
     [SerializeField]
@@ -21,6 +22,8 @@ public class GameMaster : MonoBehaviour
     private int lifeCount = 3;
     [SerializeField]
     private Text lifesText;
+    private Play playerScript;
+    private BearFollower bearScript;
 
 
     public GameObject CoinPrefab { get => coinPrefab; }
@@ -51,10 +54,8 @@ public class GameMaster : MonoBehaviour
     }
     public static GameMaster Gm { get => gm; set => gm = value; }
 
-    public static void KillPlayer(Play player)
+    public static void KillPlayer()
     {
-        Destroy(player.gameObject);
-        Destroy(GameObject.FindGameObjectWithTag("Companion"));
         if (gm.lifeCount <= 1) //хз, что не так
         {
             gm.EndGame();
@@ -65,16 +66,23 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-
-    public static void KillBear(BearFollower bear)
+    public static void KillBear(GameObject bear)
     {
-        Destroy(bear.gameObject);
+        bear.SetActive(false);
     }
 
     public void RespawnPlayer()
     {
-        Instantiate(player, spawnPoint.position, spawnPoint.rotation);
-        Instantiate(bearFollower, new Vector3(player.position.x + 2, player.position.y, player.position.z), spawnPoint.rotation);
+        //перемещение девочки на позицию респавна и восстановление хп
+        player.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
+        FindObjectOfType<Play>().health = 100f;
+        FindObjectOfType<Play>().UpdateHealth();
+        
+        //перемещение мишки на позицию респавна и восстановление хп
+        if (!bearFollower.activeSelf) bearFollower.SetActive(true);
+        bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
+        FindObjectOfType<BearFollower>().health = 100f;
+        FindObjectOfType<BearFollower>().UpdateHealth();
     }
     private void Start()
     {
@@ -86,8 +94,11 @@ public class GameMaster : MonoBehaviour
     public void EndGame()
     {
         scoreUI.SetActive(false);
+        lifeUI.SetActive(false);
         gameOverScoreText.text = string.Format("score: {0}", score);
         gameOverUI.SetActive(true);
+        Destroy(bearFollower);
+        Destroy(player);
     }
 
     public static void KillEnemy(Enemy enemy)

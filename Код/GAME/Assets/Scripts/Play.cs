@@ -17,6 +17,7 @@ public class Play : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private GameObject hud;
 
     public int amountOfJumps = 1;
 
@@ -31,7 +32,6 @@ public class Play : MonoBehaviour
     public Transform groundCheck;
     public Transform wallCheck;
     public Transform light;
-
     public LayerMask whatIsGround;
 
     public int curHealth;
@@ -43,7 +43,8 @@ public class Play : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
-
+        hud = GameObject.FindGameObjectWithTag("HUDgirl");
+        UpdateHealth();
         curHealth = maxHealth;
     }
 
@@ -56,7 +57,6 @@ public class Play : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         IfFellDown();
-        CheckIfDie();
     }
 
     private void FixedUpdate()
@@ -179,9 +179,10 @@ public class Play : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        UpdateHealth();
+        if (health <= 0)
         {
-            GameMaster.KillPlayer(this);
+            GameMaster.KillPlayer();
             GameMaster.Gm.LifeCount--;
         }
     }
@@ -205,20 +206,8 @@ public class Play : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void UpdateHealth()
     {
-        Application.LoadLevel(Application.loadedLevel);
-    }
-
-    private void CheckIfDie()
-    {
-        if (curHealth > maxHealth)
-        {
-            curHealth = maxHealth;
-        }
-        if (curHealth <= 0)
-        {
-            Die();
-        }
+        hud.GetComponent<Animator>().SetFloat("Health", health);
     }
 }

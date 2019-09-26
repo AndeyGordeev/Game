@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
         set { _healthCur = Mathf.Clamp(value, 0, healthMax);  }
     }
 
+    private Play player;
+    private BearFollower bear;
     private StatusIndicator statusIndicator;
 
     private void Start()
@@ -19,6 +21,21 @@ public class Enemy : MonoBehaviour
         if (statusIndicator != null)
         {
             statusIndicator.SetHealth(healthCur, healthMax);
+        }
+        player = FindObjectOfType<Play>();
+        bear = FindObjectOfType<BearFollower>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            player.DamagePlayer(25f);
+        }
+
+        if (collision.gameObject.tag.Equals("Companion"))
+        {
+            bear.DamagePlayer(25f);
         }
     }
 
