@@ -8,7 +8,6 @@ public class Play : MonoBehaviour
 
     private int amountOfJumpsLeft;
 
-    private bool isFacingRight = true;
     private bool isWalking;
     private bool isGrounded;
     private bool isTouchingWall;
@@ -21,6 +20,7 @@ public class Play : MonoBehaviour
 
     public int amountOfJumps = 1;
 
+    public bool isFacingRight = true;
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;

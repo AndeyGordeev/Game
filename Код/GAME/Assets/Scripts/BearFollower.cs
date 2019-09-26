@@ -18,6 +18,8 @@ public class BearFollower : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private Play player;
+
     public GameObject hud;
 
     public int amountOfJumps = 1;
@@ -51,6 +53,7 @@ public class BearFollower : MonoBehaviour
         UpdateHealth();
         curHealth = maxHealth;
         attackHitBox.SetActive(false);
+        player = FindObjectOfType<Play>();
     }
 
     // Update is called once per frame
@@ -174,6 +177,22 @@ public class BearFollower : MonoBehaviour
                 movementBlock = true;
                 canJump = false;
             }
+        }
+
+        if (Input.GetButtonDown("CompanionTeleport"))
+        {
+            if (player.isFacingRight)
+            {
+                transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
+                isFacingRight = true;
+            }
+            else
+            {
+                transform.position = new Vector3(player.transform.position.x - 2, transform.position.y, transform.position.z);
+                isFacingRight = false;
+            }
+            
+            movementBlock = false;
         }
     }
 
