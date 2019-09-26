@@ -578,9 +578,10 @@ GameObject:
   - component: {fileID: 399860543}
   - component: {fileID: 399860545}
   - component: {fileID: 399860544}
+  - component: {fileID: 399860546}
   m_Layer: 5
   m_Name: Health
-  m_TagString: Untagged
+  m_TagString: HUDgirl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -641,6 +642,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399860542}
   m_CullTransparentMesh: 0
+--- !u!95 &399860546
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399860542}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b16bdd8dc94355498ead79753af1b83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &412708938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &521826934
 Transform:
   m_ObjectHideFlags: 0
@@ -25580,12 +25600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2947ab27b70a9e644b14544d07db5524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3900656973302517621, guid: b783ef06219045647bb88cbd6f49ce2b, type: 3}
-  bearFollower: {fileID: 188854661343162633, guid: 2c5140ee5d26ff8479ad164142b43c03,
-    type: 3}
+  player: {fileID: 1223998650}
+  bearFollower: {fileID: 1125324720}
   spawnPoint: {fileID: 2096718691}
   gameOverUI: {fileID: 2013383040}
-  scoreUI: {fileID: 659618132}
+  scoreUI: {fileID: 668331945}
+  lifeUI: {fileID: 1296685459}
   coinPrefab: {fileID: 4824888500626160310, guid: a113ed001e2e48b45a8d1f382c4d954d,
     type: 3}
   scoreText: {fileID: 1151710622}
@@ -25805,6 +25825,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a113ed001e2e48b45a8d1f382c4d954d, type: 3}
+--- !u!1 &1125324720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 188854661343162638, guid: 2c5140ee5d26ff8479ad164142b43c03,
+    type: 3}
+  m_PrefabInstance: {fileID: 188854660808859471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1129839810
 GameObject:
   m_ObjectHideFlags: 0
@@ -27815,9 +27841,10 @@ GameObject:
   - component: {fileID: 2107610338}
   - component: {fileID: 2107610340}
   - component: {fileID: 2107610339}
+  - component: {fileID: 2107610341}
   m_Layer: 5
   m_Name: HealthB
-  m_TagString: Untagged
+  m_TagString: HUDbear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27878,6 +27905,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107610337}
   m_CullTransparentMesh: 0
+--- !u!95 &2107610341
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107610337}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 590a8f538b4d9664294085e3e0bc1951, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2117765335
 GameObject:
   m_ObjectHideFlags: 0
@@ -28483,6 +28529,21 @@ PrefabInstance:
       propertyPath: m_LookaheadIgnoreY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3900656973302517616, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900656973302517616, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 399860542}
+    - target: {fileID: 3900656973302517616, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: baseHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b783ef06219045647bb88cbd6f49ce2b, type: 3}
 --- !u!1001 &6468229993362500719
@@ -28557,5 +28618,25 @@ PrefabInstance:
       propertyPath: tar
       value: 
       objectReference: {fileID: 1223998650}
+    - target: {fileID: 6468229993713427075, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468229993713427075, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: stopDist
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468229993713427074, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468229993713427074, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a338c12c28e6474c9ea0676efc1c793, type: 3}

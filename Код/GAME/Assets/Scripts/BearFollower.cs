@@ -18,6 +18,7 @@ public class BearFollower : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+    private GameObject hud;
 
     public int amountOfJumps = 1;
 
@@ -43,7 +44,8 @@ public class BearFollower : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         amountOfJumpsLeft = amountOfJumps;
-
+        hud = GameObject.FindGameObjectWithTag("HUDbear");
+        UpdateHealth();
         curHealth = maxHealth;
     }
 
@@ -54,7 +56,6 @@ public class BearFollower : MonoBehaviour
         UpdateAnimations();
         CheckIfWallSliding();
         IfFellDown();
-        CheckIfDie();
         CheckVelocity();
         if (!movementBlock)
         {
@@ -210,9 +211,10 @@ public class BearFollower : MonoBehaviour
     public void DamagePlayer(float damage)
     {
         health -= damage;
+        UpdateHealth();
         if (health <= 0)
         {
-            GameMaster.KillBear(this);
+            GameMaster.KillBear(this.gameObject);
         }
     }
 
@@ -230,20 +232,8 @@ public class BearFollower : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void UpdateHealth()
     {
-        Application.LoadLevel(Application.loadedLevel);
-    }
-
-    private void CheckIfDie()
-    {
-        if (curHealth > maxHealth)
-        {
-            curHealth = maxHealth;
-        }
-        if (curHealth <= 0)
-        {
-            Die();
-        }
+        hud.GetComponent<Animator>().SetFloat("Health", health);
     }
 }
