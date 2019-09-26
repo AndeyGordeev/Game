@@ -20,7 +20,7 @@ public class BearFollower : MonoBehaviour
     private Animator anim;
     private Play player;
 
-    public GameObject hud;
+    private GameObject hud;
 
     public int amountOfJumps = 1;
 
@@ -184,11 +184,14 @@ public class BearFollower : MonoBehaviour
             if (player.isFacingRight)
             {
                 transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
+                if (!isFacingRight) Flip();
                 isFacingRight = true;
+                
             }
             else
             {
                 transform.position = new Vector3(player.transform.position.x - 2, transform.position.y, transform.position.z);
+                if (isFacingRight) Flip();
                 isFacingRight = false;
             }
             
