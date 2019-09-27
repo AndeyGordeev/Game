@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7156366356115251896}
   - component: {fileID: 4843215225685933104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267509134017891155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.531249, z: -10}
+  m_LocalPosition: {x: 0, y: 2.5312495, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5777940334822362198}
@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3900656972747999029}
   - component: {fileID: 3900656972747999028}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3900656972747999030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17560005, y: -0.0200001, z: -2}
+  m_LocalPosition: {x: -0.17560005, y: -0.0200001, z: -4}
   m_LocalScale: {x: 1, y: 1.0125, z: 1}
   m_Children: []
   m_Father: {fileID: 3900656973302517621}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3900656973302517623}
   - component: {fileID: 3900656973302517515}
   - component: {fileID: 3900656973302517616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3900656973302517617}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.86, y: -0.9, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -303,7 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc75f90e1f09cf4db3712492b240e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfJumps: 2
+  amountOfJumps: 1
+  isFacingRight: 1
   movementSpeed: 6
   jumpForce: 16
   groundCheckRadius: 0.3
@@ -317,6 +318,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  curHealth: 0
+  maxHealth: 4
 --- !u!1 &3900656973477928283
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3900656973477928282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3900656974226410294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +391,7 @@ GameObject:
   - component: {fileID: 5777940334822362198}
   - component: {fileID: 6493615054041370989}
   - component: {fileID: 483782214038261344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,21 +436,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0
+  m_LookaheadTime: 0.3
   m_LookaheadSmoothing: 10
   m_LookaheadIgnoreY: 1
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 0.5
   m_ZDamping: 0
   m_ScreenX: 0.5
   m_ScreenY: 0.65
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0.8
+  m_DeadZoneWidth: 0.1
+  m_DeadZoneHeight: 0.1
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 1
+  m_SoftZoneWidth: 1
+  m_SoftZoneHeight: 0.89
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1

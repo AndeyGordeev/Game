@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4824888500626160307}
   - component: {fileID: 4824888500626160308}
   - component: {fileID: 5991134595653398402}
+  - component: {fileID: 1152167606}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1090984099
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300368, guid: fc06b3b4958bc324ea25477de958b964, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efb5fa1dc3bff2d4ea56f4a40795b982, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,3 +119,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1152167606
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824888500626160310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 541736e02ce90734bbe20abd3d33a92c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
