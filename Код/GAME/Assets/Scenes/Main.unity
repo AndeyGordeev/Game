@@ -26819,6 +26819,11 @@ PrefabInstance:
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1223998650}
+    - target: {fileID: 6468229993713427102, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: attackPower
+      value: 800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a338c12c28e6474c9ea0676efc1c793, type: 3}
 --- !u!4 &1582693717 stripped
@@ -28201,7 +28206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096718690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.882751, y: -1.4105366, z: 0}
+  m_LocalPosition: {x: -4.84, y: -0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -28664,6 +28669,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_YDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_LookaheadTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_SoftZoneHeight
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 483782214038261344, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_SoftZoneWidth
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b783ef06219045647bb88cbd6f49ce2b, type: 3}
 --- !u!1001 &6468229993362500719
@@ -28738,5 +28773,21 @@ PrefabInstance:
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1223998650}
+    - target: {fileID: 6468229993713427103, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a55245cd91a7d8c429a9304e0a399e51,
+        type: 3}
+    - target: {fileID: 6468229993713427073, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c95897fb4b7096d40874f6c25814ee85, type: 2}
+    - target: {fileID: 6468229993713427102, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: attackPower
+      value: 800
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a338c12c28e6474c9ea0676efc1c793, type: 3}

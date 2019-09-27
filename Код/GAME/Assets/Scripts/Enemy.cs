@@ -32,17 +32,17 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             player.DamagePlayer(25f);
-            Knockback(collision, player.isFacingRight);
+            Knockback(collision);
         }
 
         if (collision.gameObject.tag.Equals("Companion") && bear.isAttacking == false)
         {
             bear.DamagePlayer(25f);
-            Knockback(collision, bear.isFacingRight);
+            Knockback(collision);
         }
     }
 
-    private void Knockback(Collision2D collision, bool isFacingRight)
+    private void Knockback(Collision2D collision)
     {
         int side = 0;
         if ((transform.position.x - collision.gameObject.transform.position.x) <= 0) side = 1; //если персонаж правее(координата х противника - персонажа = отрицательное значение) то толкать вправо

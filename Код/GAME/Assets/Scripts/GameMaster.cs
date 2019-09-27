@@ -78,7 +78,7 @@ public class GameMaster : MonoBehaviour
         playerScript = FindObjectOfType<Play>();
         playerScript.health = 100f;
         playerScript.UpdateHealth();
-        
+
         //перемещение мишки на позицию респавна и восстановление хп
         if (!bearFollower.activeSelf) bearFollower.SetActive(true);
         bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
