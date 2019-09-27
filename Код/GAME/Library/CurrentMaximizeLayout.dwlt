@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 587
-  m_MinSize: {x: 681, y: 474}
+  m_MinSize: {x: 679, y: 474}
   m_MaxSize: {x: 14002, y: 14024}
   vertical: 0
-  controlID: 150
+  controlID: 10458
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 474}
   m_MaxSize: {x: 10000, y: 14024}
   vertical: 1
-  controlID: 151
+  controlID: 10384
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 224}
   m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 152
+  controlID: 10359
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: d4fbffff161e0000721e0000901f0000
+      m_ExpandedIDs: 20f7ffffd4fbffff161e0000b6400000c0400000f44000001e4100002c4100003e410000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -295,9 +295,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.0240164, y: -0.6685535, z: -1.6611328}
+    m_Target: {x: 256.27396, y: 120.53414, z: -5.648311}
     speed: 2
-    m_Value: {x: -3.0240164, y: -0.6685535, z: -1.6611328}
+    m_Value: {x: 256.27396, y: 120.53414, z: -5.648311}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -329,9 +329,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 5.278703
+    m_Target: 317.42914
     speed: 2
-    m_Value: 5.278703
+    m_Value: 317.42914
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -730,20 +730,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - "Assets/Sprites/\u0424\u043E\u043D"
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Scripts
+  - "Assets/Sprites/\u0424\u043E\u043D"
   m_LastFoldersGridSize: 96
-  m_LastProjectPath: "C:\\\u0443\u0447\u0435\u0431\u0430\\\u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\\4
-    \u043A\u0443\u0440\u0441(1 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\\u0423\u0418\u0422\u041F\\Game\\\u041A\u043E\u0434\\GAME"
+  m_LastProjectPath: "C:\\\u0443\u0447\u0435\u0431\u0430\\unity\\testRealGame\\GAME"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 92}
-    m_SelectedIDs: 7e1a0000
-    m_LastClickedID: 6782
+    scrollPos: {x: 0, y: 140}
+    m_SelectedIDs: 3a180000
+    m_LastClickedID: 6202
     m_ExpandedIDs: 00000000021100003a1800005a190000c81b00004c1c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -772,7 +771,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000021100003a1800005a190000c81b00004c1c0000
+    m_ExpandedIDs: 00000000021100003a1800005a190000c81b00004c1c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -797,9 +796,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 3cfbffff
-    m_LastClickedInstanceID: -1220
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: e8400000
+    m_LastClickedInstanceID: 16616
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000e6300000c629000026460000665e0000cee6fcff642e000026f1ffff7257000000150000000000009c510000324900006a53000076460000321a0000701b0000b01c0000541c00000c110000343e0000666d0000fe500000f87c0000c41a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -855,7 +854,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 22534
+  m_LastSelectedObjectID: 16646
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -877,10 +876,10 @@ MonoBehaviour:
     y: 0
     width: 368
     height: 587
-  m_MinSize: {x: 277, y: 298}
-  m_MaxSize: {x: 4002, y: 8048}
+  m_MinSize: {x: 275, y: 274}
+  m_MaxSize: {x: 4002, y: 8024}
   vertical: 1
-  controlID: 122
+  controlID: 10459
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
