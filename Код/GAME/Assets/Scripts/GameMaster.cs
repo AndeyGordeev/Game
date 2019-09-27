@@ -75,16 +75,19 @@ public class GameMaster : MonoBehaviour
     {
         //перемещение девочки на позицию респавна и восстановление хп
         player.transform.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y, spawnPoint.position.z);
-        FindObjectOfType<Play>().health = 100f;
-        FindObjectOfType<Play>().UpdateHealth();
+        playerScript = FindObjectOfType<Play>();
+        playerScript.health = 100f;
+        playerScript.UpdateHealth();
         
         //перемещение мишки на позицию респавна и восстановление хп
         if (!bearFollower.activeSelf) bearFollower.SetActive(true);
         bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
-        FindObjectOfType<BearFollower>().health = 100f;
-        FindObjectOfType<BearFollower>().UpdateHealth();
-        FindObjectOfType<BearFollower>().isAttacking = false;
-        FindObjectOfType<BearFollower>().attackHitBox.SetActive(false);
+        bearScript = FindObjectOfType<BearFollower>();
+        bearScript.health = 100f;
+        bearScript.UpdateHealth();
+        bearScript.isAttacking = false;
+        bearScript.attackHitBox.SetActive(false);
+        bearScript.movementBlock = false;
     }
     private void Start()
     {

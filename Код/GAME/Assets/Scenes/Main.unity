@@ -26930,6 +26930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 25
+  attackPower: 200
 --- !u!1 &1581116442
 GameObject:
   m_ObjectHideFlags: 0
@@ -28949,6 +28950,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 188854661343162636, guid: 2c5140ee5d26ff8479ad164142b43c03,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c5140ee5d26ff8479ad164142b43c03, type: 3}
 --- !u!1001 &1374919232544605907
@@ -29293,6 +29299,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -4
       objectReference: {fileID: 0}
+    - target: {fileID: 3900656973302517620, guid: b783ef06219045647bb88cbd6f49ce2b,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b783ef06219045647bb88cbd6f49ce2b, type: 3}
 --- !u!1001 &6468229993362500719
@@ -29412,5 +29423,10 @@ PrefabInstance:
       propertyPath: statusIndicator
       value: 
       objectReference: {fileID: 1823262096}
+    - target: {fileID: 6468229993713427102, guid: 3a338c12c28e6474c9ea0676efc1c793,
+        type: 3}
+      propertyPath: attackPower
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a338c12c28e6474c9ea0676efc1c793, type: 3}

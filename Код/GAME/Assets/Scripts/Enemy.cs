@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public StatusIndicator statusIndicator;
+    public int attackPower = 1000;
     public int healthMax = 100;
     private int _healthCur = 100;
     public int healthCur
@@ -31,12 +32,22 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             player.DamagePlayer(25f);
+            Knockback(collision, player.isFacingRight);
         }
 
         if (collision.gameObject.tag.Equals("Companion") && bear.isAttacking == false)
         {
             bear.DamagePlayer(25f);
+            Knockback(collision, bear.isFacingRight);
         }
+    }
+
+    private void Knockback(Collision2D collision, bool isFacingRight)
+    {
+        int side = 0;
+        if ((transform.position.x - collision.gameObject.transform.position.x) <= 0) side = 1; //если персонаж правее(координата х противника - персонажа = отрицательное значение) то толкать вправо
+        else side = -1;
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * attackPower / 1.5f + (transform.right * attackPower) * side * 3);
     }
 
     public void DamageEnemy(int damage)

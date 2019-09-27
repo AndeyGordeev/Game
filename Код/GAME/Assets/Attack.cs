@@ -5,16 +5,17 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public int attackDamage = 25;
+    public int attackPower = 200;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        int side = 0;
         if (collision.gameObject.tag.Equals("Enemy"))
         {
             collision.gameObject.GetComponent<Enemy>().DamageEnemy(attackDamage);
-            if (FindObjectOfType<BearFollower>().isFacingRight == true)
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200 + (transform.right * 200));
-            else
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 200 + (transform.right * 200) * -1);
+            if (FindObjectOfType<BearFollower>().isFacingRight == true) side = 1;
+            else side = -1;
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * attackPower + (transform.right * attackPower) * side);
         }
     }
 }

@@ -14,7 +14,6 @@ public class BearFollower : MonoBehaviour
     private bool isTouchingWall;
     private bool isWallSliding;
     private bool canJump = true;
-    private bool movementBlock = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -25,6 +24,7 @@ public class BearFollower : MonoBehaviour
     public int amountOfJumps = 1;
 
     public bool isFacingRight = true;
+    public bool movementBlock = false;
     public float movementSpeed = 10.0f;
     public float jumpForce = 16.0f;
     public float groundCheckRadius;
