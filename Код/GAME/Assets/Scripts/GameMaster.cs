@@ -78,6 +78,7 @@ public class GameMaster : MonoBehaviour
         playerScript = FindObjectOfType<Play>();
         playerScript.health = 100f;
         playerScript.UpdateHealth();
+        if (!playerScript.isFacingRight) playerScript.Flip();
 
         //перемещение мишки на позицию респавна и восстановление хп
         if (!bearFollower.activeSelf) bearFollower.SetActive(true);
@@ -88,6 +89,7 @@ public class GameMaster : MonoBehaviour
         bearScript.isAttacking = false;
         bearScript.attackHitBox.SetActive(false);
         bearScript.movementBlock = false;
+        if (!bearScript.isFacingRight) bearScript.Flip();
     }
     private void Start()
     {

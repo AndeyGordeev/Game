@@ -221,7 +221,7 @@ public class BearFollower : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         isFacingRight = !isFacingRight;
         Vector3 scale = transform.localScale;
