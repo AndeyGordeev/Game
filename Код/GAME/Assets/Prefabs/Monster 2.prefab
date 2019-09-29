@@ -336,7 +336,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 10
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  tar: {fileID: 0}
+  playerTarget: {fileID: 0}
   findingDist: 20
   stopDist: 1.5
 --- !u!114 &2185147931503679078
@@ -373,6 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5218710d8f6c1e04797467adaf88058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusIndicator: {fileID: 0}
+  attackPower: 1000
   healthMax: 100
 --- !u!1 &2185147931958049752
 GameObject:
