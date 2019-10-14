@@ -31,12 +31,14 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            AudioManagerScript.PlaySound("monsterHit");
             player.DamagePlayer(25f);
             Knockback(collision);
         }
 
         if (collision.gameObject.tag.Equals("Companion") && bear.isAttacking == false)
         {
+            AudioManagerScript.PlaySound("monsterHit");
             bear.DamagePlayer(25f);
             Knockback(collision);
         }

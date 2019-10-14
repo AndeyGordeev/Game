@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
         int side = 0;
         if (collision.gameObject.tag.Equals("Enemy"))
         {
+            AudioManagerScript.PlaySound("playerHit");
             collision.gameObject.GetComponent<Enemy>().DamageEnemy(attackDamage);
             if (FindObjectOfType<BearFollower>().isFacingRight == true) side = 1;
             else side = -1;

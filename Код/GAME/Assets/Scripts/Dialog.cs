@@ -29,21 +29,20 @@ public class Dialog : MonoBehaviour
         */
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (pointDialog.Length > numberDialog)
         {
             if (player.transform.position.x >= pointDialog[numberDialog] - 0.5 && player.transform.position.x <= pointDialog[numberDialog] + 0.5)
             {
-                StartCoroutine(Type());
+                textDisp.text = sentences[id];
+                Time.timeScale = 0f;
+                nextButt.SetActive(true);
+                //StartCoroutine(Type());
                 numberDialog++;
             }
         }
 
-        if (textDisp.text == sentences[id])
-        {
-            nextButt.SetActive(true);
-        }
         if (Input.anyKeyDown && nextButt.activeSelf)
         {
             NextSentence();
@@ -67,11 +66,14 @@ public class Dialog : MonoBehaviour
         {
             id++;
             textDisp.text = "";
-            StartCoroutine(Type());
+            textDisp.text = sentences[id];
+            nextButt.SetActive(true);
+            //StartCoroutine(Type());
 
         }
         else
         {
+            Time.timeScale = 1f;
             textDisp.text = "";
             nextButt.SetActive(false);
             id++;

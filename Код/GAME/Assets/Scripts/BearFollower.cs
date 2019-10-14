@@ -181,6 +181,7 @@ public class BearFollower : MonoBehaviour
 
         if (Input.GetButtonDown("CompanionTeleport"))
         {
+            AudioManagerScript.PlaySound("bearTeleporting");
             if (player.isFacingRight)
             {
                 transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
