@@ -54,12 +54,12 @@ TagManager:
   - name: Decoration
     uniqueID: 3203983197
     locked: 0
-  - name: Foreground Decoration
-    uniqueID: 2062617519
-    locked: 0
   - name: Platforms
     uniqueID: 797502517
     locked: 0
   - name: Player
     uniqueID: 1937521007
+    locked: 0
+  - name: Foreground Decoration
+    uniqueID: 2062617519
     locked: 0
