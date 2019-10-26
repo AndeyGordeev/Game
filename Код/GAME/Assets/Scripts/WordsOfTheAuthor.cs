@@ -9,7 +9,7 @@ public class WordsOfTheAuthor : MonoBehaviour
     [TextArea(3, 10)]
     public string[] sentences;
 
-    public float[] pointDialog;
+    public GameObject[] pointDialog;
     
     private int numberWords;
 
@@ -19,14 +19,13 @@ public class WordsOfTheAuthor : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pointDialog = new[] {-14f,-4f,15f,24f};//точки на оси ОХ, где включается монолог
     }
 
     private void FixedUpdate()
     {
         if (pointDialog.Length > numberWords)
         {
-            if (player.transform.position.x >= pointDialog[numberWords] - 0.5 && player.transform.position.x <= pointDialog[numberWords] + 0.5)
+            if (player.transform.position.x >= pointDialog[numberWords].transform.position.x - 0.5 && player.transform.position.x <= pointDialog[numberWords].transform.position.x + 0.5)
             {
                 textDisp.text = sentences[numberWords];
                 Time.timeScale = 0f;

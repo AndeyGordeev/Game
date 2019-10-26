@@ -10,7 +10,7 @@ public class Dialog : MonoBehaviour
     public string[] sentences;
     public float typingSpeed;
 
-    public float[] pointDialog;
+    public GameObject[] pointDialog;
     public int[] endingDialog;
 
     private int id;
@@ -22,7 +22,6 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pointDialog = new[] {22f};//точки на оси ОХ, где включаются диалоги
         endingDialog = new[] {0, 5};/*на кокаой реплике останавливается диалог. 
         То есть если у нас на данный момент прописанно только 5 реплик, 
         то первый диалог будет состоять из первых 2х реплик, а вротой из 3 последующих. 
@@ -33,7 +32,7 @@ public class Dialog : MonoBehaviour
     {
         if (pointDialog.Length > numberDialog)
         {
-            if (player.transform.position.x >= pointDialog[numberDialog] - 0.5 && player.transform.position.x <= pointDialog[numberDialog] + 0.5)
+            if (player.transform.position.x >= pointDialog[numberDialog].transform.position.x - 0.5 && player.transform.position.x <= pointDialog[numberDialog].transform.position.x + 0.5)
             {
                 textDisp.text = sentences[id];
                 Time.timeScale = 0f;
