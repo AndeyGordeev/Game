@@ -22,8 +22,8 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pointDialog = new[] { -4f, 7f };//точки на оси ОХ, где включаются диалоги
-        endingDialog = new[] { 0, 2, sentences.Length };/*на кокаой реплике останавливается диалог. 
+        pointDialog = new[] {22f};//точки на оси ОХ, где включаются диалоги
+        endingDialog = new[] {0, 5};/*на кокаой реплике останавливается диалог. 
         То есть если у нас на данный момент прописанно только 5 реплик, 
         то первый диалог будет состоять из первых 2х реплик, а вротой из 3 последующих. 
         */
@@ -77,6 +77,17 @@ public class Dialog : MonoBehaviour
             textDisp.text = "";
             nextButt.SetActive(false);
             id++;
+            BearActivate();
+        }
+    }
+
+    private void BearActivate()
+    {
+        if (numberDialog == 1)
+        {
+            BearFollower bear = FindObjectOfType<BearFollower>();
+            bear.canMove = true;
+            bear.Flip();
         }
     }
 }

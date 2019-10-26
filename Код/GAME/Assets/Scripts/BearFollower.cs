@@ -33,6 +33,7 @@ public class BearFollower : MonoBehaviour
     public float health = 100f;
     public int fallBoundary = -20; //граница падения по оси Y
     public bool isAttacking = false;
+    public bool canMove = false;
 
     public Transform groundCheck;
     public Transform wallCheck;
@@ -54,6 +55,7 @@ public class BearFollower : MonoBehaviour
         curHealth = maxHealth;
         attackHitBox.SetActive(false);
         player = FindObjectOfType<Play>();
+        Flip();
     }
 
     // Update is called once per frame
@@ -160,43 +162,47 @@ public class BearFollower : MonoBehaviour
 
     private void CheckInput()
     {
-        movementInputDirection = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump"))
+        if (canMove)
         {
-            Jump();
-        }
+            movementInputDirection = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("CompanionMovementBlock"))
-        {
-            if (movementBlock)
+            if (Input.GetButtonDown("Jump"))
             {
+                Jump();
+            }
+
+            if (Input.GetButtonDown("CompanionMovementBlock"))
+            {
+                if (movementBlock)
+                {
+                    movementBlock = false;
+                }
+                else
+                {
+                    movementBlock = true;
+                    canJump = false;
+                }
+            }
+
+            if (Input.GetButtonDown("CompanionTeleport"))
+            {
+                AudioManagerScript.PlaySound("bearTeleporting");
+                if (player.isFacingRight)
+                {
+                    transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
+                    if (!isFacingRight) Flip();
+                    isFacingRight = true;
+
+                }
+                else
+                {
+                    transform.position = new Vector3(player.transform.position.x - 2, transform.position.y, transform.position.z);
+                    if (isFacingRight) Flip();
+                    isFacingRight = false;
+                }
+
                 movementBlock = false;
             }
-            else {
-                movementBlock = true;
-                canJump = false;
-            }
-        }
-
-        if (Input.GetButtonDown("CompanionTeleport"))
-        {
-            AudioManagerScript.PlaySound("bearTeleporting");
-            if (player.isFacingRight)
-            {
-                transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
-                if (!isFacingRight) Flip();
-                isFacingRight = true;
-                
-            }
-            else
-            {
-                transform.position = new Vector3(player.transform.position.x - 2, transform.position.y, transform.position.z);
-                if (isFacingRight) Flip();
-                isFacingRight = false;
-            }
-            
-            movementBlock = false;
         }
     }
 
