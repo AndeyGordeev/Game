@@ -36,6 +36,7 @@ public class Play : MonoBehaviour
 
     public int curHealth;
     public int maxHealth = 4;
+    KeyBind keyBind = new KeyBind();
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class Play : MonoBehaviour
         hud = GameObject.FindGameObjectWithTag("HUDgirl");
         UpdateHealth();
         curHealth = maxHealth;
+        keyBind.InitializeDictionary();
     }
 
     // Update is called once per frame
@@ -131,9 +133,20 @@ public class Play : MonoBehaviour
 
     private void CheckInput()
     {
-        movementInputDirection = Input.GetAxisRaw("Horizontal");
+        if (keyBind.GetKey("MoveLeft"))
+        {
+            movementInputDirection = -1;
+        }
+        else if (keyBind.GetKey("MoveRight"))
+        {
+            movementInputDirection = 1;
+        }
+        else 
+        {
+            movementInputDirection = 0;
+        }
 
-        if (Input.GetButtonDown("Jump"))
+        if (keyBind.GetKeyDown("Jump"))
         {
             Jump();
         }

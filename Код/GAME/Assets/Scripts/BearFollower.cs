@@ -43,6 +43,7 @@ public class BearFollower : MonoBehaviour
 
     public int curHealth;
     public int maxHealth = 4;
+    KeyBind keyBind = new KeyBind();
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class BearFollower : MonoBehaviour
         attackHitBox.SetActive(false);
         player = FindObjectOfType<Play>();
         Flip();
+        keyBind.InitializeDictionary();
     }
 
     // Update is called once per frame
@@ -164,14 +166,25 @@ public class BearFollower : MonoBehaviour
     {
         if (canMove)
         {
-            movementInputDirection = Input.GetAxisRaw("Horizontal");
+            if (keyBind.GetKey("MoveLeft"))
+            {
+                movementInputDirection = -1;
+            }
+            else if (keyBind.GetKey("MoveRight"))
+            {
+                movementInputDirection = 1;
+            }
+            else 
+            {
+                movementInputDirection = 0;
+            }
 
-            if (Input.GetButtonDown("Jump"))
+            if (keyBind.GetKeyDown("Jump"))
             {
                 Jump();
             }
 
-            if (Input.GetButtonDown("CompanionMovementBlock"))
+            if (keyBind.GetKeyDown("Block"))
             {
                 if (movementBlock)
                 {
@@ -184,7 +197,7 @@ public class BearFollower : MonoBehaviour
                 }
             }
 
-            if (Input.GetButtonDown("CompanionTeleport"))
+            if (keyBind.GetKeyDown("Teleport"))
             {
                 AudioManagerScript.PlaySound("bearTeleporting");
                 if (player.isFacingRight)
@@ -274,7 +287,7 @@ public class BearFollower : MonoBehaviour
     
     private void Attack()
     {
-        if (Input.GetButtonDown("Fire1") && !isAttacking)
+        if (keyBind.GetKeyDown("Attack") && !isAttacking)
         {
             isAttacking = true;
 
