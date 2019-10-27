@@ -8,7 +8,7 @@ public class Dialog : MonoBehaviour
     public TextMeshProUGUI textDisp;
     [TextArea(3, 10)]
     public string[] sentences;
-    public float typingSpeed;
+    //public float typingSpeed;
 
     public GameObject[] pointDialog;
     public int[] endingDialog;
@@ -22,7 +22,7 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        endingDialog = new[] {0, 5};/*на кокаой реплике останавливается диалог. 
+        endingDialog = new[] {0, 5, 6};/*на кокаой реплике останавливается диалог. 
         То есть если у нас на данный момент прописанно только 5 реплик, 
         то первый диалог будет состоять из первых 2х реплик, а вротой из 3 последующих. 
         */
@@ -48,14 +48,14 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    IEnumerator Type()
+    /*IEnumerator Type()
     {
         foreach(char letter in sentences[id].ToCharArray())
         {
             textDisp.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
-    }
+    }*/
 
     public void NextSentence()
     {
