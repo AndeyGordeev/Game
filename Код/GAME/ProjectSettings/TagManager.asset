@@ -11,6 +11,8 @@ TagManager:
   - HUDgirl
   - HUDbear
   - Enemy
+  - PlateOff
+  - PlateOn
   layers:
   - Default
   - TransparentFX
