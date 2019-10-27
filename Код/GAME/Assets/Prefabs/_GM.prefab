@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5729782449351632794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5729782449351632772}
+  - component: {fileID: 5729782449351632773}
+  m_Layer: 0
+  m_Name: _GM
+  m_TagString: GM
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5729782449351632772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729782449351632794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9291372, y: 1.3968341, z: -1.8281251}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5729782449351632773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729782449351632794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2947ab27b70a9e644b14544d07db5524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  bearFollower: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  scoreUI: {fileID: 0}
+  lifeUI: {fileID: 0}
+  coinPrefab: {fileID: 4824888500626160310, guid: a113ed001e2e48b45a8d1f382c4d954d,
+    type: 3}
+  scoreText: {fileID: 0}
+  gameOverScoreText: {fileID: 0}
+  lifePrefab: {fileID: 3061790445261255655, guid: 5dc46c0b21c2f1d498abbd005bb5a72c,
+    type: 3}
+  lifesText: {fileID: 0}

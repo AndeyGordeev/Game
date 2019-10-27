@@ -85,6 +85,7 @@ TextureImporter:
     21300160: Basic Tiles Only_79
     21300162: Basic Tiles Only_80
     21300164: Basic Tiles Only_81
+    21300166: Basic Tiles Only_82
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -1813,6 +1814,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d97b40b3d7f48c24184d5011a1d0bd1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Basic Tiles Only_82
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 464
+        width: 39
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4e5989bd8c578e43b60fd3440dd3cdd
       vertices: []
       indices: 
       edges: []
