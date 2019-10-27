@@ -47,6 +47,11 @@ public class Play : MonoBehaviour
         hud = GameObject.FindGameObjectWithTag("HUDgirl");
         UpdateHealth();
         curHealth = maxHealth;
+        UpdateControls();
+    }
+
+    public void UpdateControls()
+    {
         keyBind.InitializeDictionary();
     }
 
@@ -59,6 +64,8 @@ public class Play : MonoBehaviour
         CheckIfCanJump();
         CheckIfWallSliding();
         IfFellDown();
+        //Пока не придумал, как вызвать после выхода из паузы
+        UpdateControls();
     }
 
     private void FixedUpdate()

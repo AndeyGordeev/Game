@@ -16,18 +16,21 @@ public class KeyBind : MonoBehaviour
 
     public void InitializeDictionary()
     {
+        dict.Clear();
         dict.Add("MoveLeft", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MoveLeft", "A")));
         dict.Add("MoveRight", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("MoveRight", "D")));
         dict.Add("Jump", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Jump", "Space")));
         dict.Add("Teleport", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Teleport", "F")));
         dict.Add("Block", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Block", "R")));
         dict.Add("Attack", (KeyCode)Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Attack", "Mouse0")));
-        left.text = dict["MoveLeft"].ToString();
-        right.text = dict["MoveRight"].ToString();
-        jump.text = dict["Jump"].ToString();
-        teleport.text = dict["Teleport"].ToString();
-        block.text = dict["Block"].ToString();
-        attack.text = dict["Attack"].ToString();
+        if (left != null){
+            left.text = dict["MoveLeft"].ToString();
+            right.text = dict["MoveRight"].ToString();
+            jump.text = dict["Jump"].ToString();
+            teleport.text = dict["Teleport"].ToString();
+            block.text = dict["Block"].ToString();
+            attack.text = dict["Attack"].ToString();
+        }
     }
 
     // Update is called once per frame

@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject scoreUI;
     [SerializeField]
     private Text scoreText;
+    public GameObject settingsMenu;
 
     // Update is called once per frame
     void Update()
