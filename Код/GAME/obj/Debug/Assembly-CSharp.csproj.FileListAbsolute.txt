@@ -484,7 +484,6 @@ C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.SharedInternalsModule.x
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.StyleSheetsModule.xml
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.TerrainModule.xml
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.TextRenderingModule.xml
-C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.UNETModule.xml
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.UnityAnalyticsModule.xml
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.UnityConnectModule.xml
 C:\Zyper\Git\Game\Код\GAME\Temp\bin\Debug\UnityEngine.UnityWebRequestModule.xml
