@@ -224,6 +224,11 @@ public class Play : MonoBehaviour
             GameMaster.Gm.LifeCount++;
             Destroy(obj.gameObject);
         }
+        if (obj.gameObject.tag == "Respawn")
+        {
+            GameMaster.Gm.spawnPoint.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Destroy(obj.gameObject);
+        }
     }
 
     public void UpdateHealth()
