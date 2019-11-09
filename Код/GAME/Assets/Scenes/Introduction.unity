@@ -141,15 +141,15 @@ RectTransform:
   m_GameObject: {fileID: 99218414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 1081820330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99218416
 MonoBehaviour:
@@ -172,7 +172,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1e536e9966dec834eaa7c9211b67999a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 97403dbfd35dc6947a068843989eee4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8196079, g: 0.7803922, b: 0.8588236, a: 1}
+  m_Color: {r: 0.5686275, g: 0.427451, b: 0.48235297, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -657,6 +657,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 599774730}
     m_Modifications:
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190599570899222, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6587190600033634889, guid: 4c82700f84d3b2b4a8d04401b264df94,
         type: 3}
       propertyPath: m_Name
@@ -766,6 +806,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190600033634887, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190600033634887, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190600033634887, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.427451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6587190600033634887, guid: 4c82700f84d3b2b4a8d04401b264df94,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.48235297
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c82700f84d3b2b4a8d04401b264df94, type: 3}

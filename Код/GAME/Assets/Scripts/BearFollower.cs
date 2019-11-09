@@ -202,14 +202,14 @@ public class BearFollower : MonoBehaviour
                 AudioManagerScript.PlaySound("bearTeleporting");
                 if (player.isFacingRight)
                 {
-                    transform.position = new Vector3(player.transform.position.x + 2, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(player.transform.position.x + 2, transform.position.y + 1, transform.position.z);
                     if (!isFacingRight) Flip();
                     isFacingRight = true;
 
                 }
                 else
                 {
-                    transform.position = new Vector3(player.transform.position.x - 2, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(player.transform.position.x - 2, transform.position.y + 1, transform.position.z);
                     if (isFacingRight) Flip();
                     isFacingRight = false;
                 }
