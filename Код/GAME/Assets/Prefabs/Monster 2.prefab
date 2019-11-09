@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 2185147931503679078}
   m_Layer: 8
   m_Name: Monster 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185147931503679076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.58, y: 0.13999999, z: 0}
+  m_LocalPosition: {x: 46.62, y: 0.13999999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2185147930164798817}
@@ -266,7 +266,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1937521007
-  m_SortingLayer: 5
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 158f431084d8e8047beaae40781c8ba3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -292,7 +292,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.006313324, y: -0.07537997}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1.9357986, y: 1.8782918}
   m_EdgeRadius: 0
 --- !u!95 &2185147931503679073
 Animator:
@@ -336,10 +336,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -357,10 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20924f789e2f124ebb53d5123250915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   playerTarget: {fileID: 0}
   findingDist: 20
-  stopDist: 1.5
+  stopDist: 1.4
 --- !u!114 &2185147931503679078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5218710d8f6c1e04797467adaf88058e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statusIndicator: {fileID: 0}
-  attackPower: 1000
+  statusIndicator: {fileID: 2185147930164798818}
+  attackPower: 800
   healthMax: 100
 --- !u!1 &2185147931958049752
 GameObject:

@@ -67,7 +67,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 43
     m_FontStyle: 1
     m_BestFit: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GAME OVER
+  m_Text: "\u0418\u0413\u0420\u0410 \u041E\u041A\u041E\u041D\u0427\u0415\u041D\u0410"
 --- !u!114 &7821979735696777308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RETRY
+  m_Text: "\u041F\u041E\u0412\u0422\u041E\u0420\u0418\u0422\u042C"
 --- !u!1 &7821979735782930472
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +846,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: "\u041C\u0415\u041D\u042E"
 --- !u!1 &7821979736374280428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -1085,7 +1085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: "\u0421\u0447\u0435\u0442: 0"
 --- !u!1 &7821979736522000357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,8 +1334,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000057216, y: 43.65}
-  m_SizeDelta: {x: 233.6, y: 54.2}
+  m_AnchoredPosition: {x: 7, y: 39.71}
+  m_SizeDelta: {x: 257.4, y: 54.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7821979736563890637
 CanvasRenderer:
@@ -1547,6 +1547,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 7821979737470358025}
   scoreUI: {fileID: 7821979737189247115}
   scoreText: {fileID: 7821979736506061573}
+  settingsMenu: {fileID: 0}
 --- !u!1 &7821979736683871114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1919,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -1930,7 +1931,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: "\u0412\u042B\u0425\u041E\u0414"
 --- !u!1 &7821979737020339277
 GameObject:
   m_ObjectHideFlags: 0
@@ -2291,7 +2292,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -2303,7 +2304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: "\u0421\u0447\u0435\u0442: 0"
 --- !u!1 &7821979737189247115
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,7 +2664,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 43
     m_FontStyle: 0
     m_BestFit: 1
@@ -2675,7 +2676,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESUME
+  m_Text: "\u041F\u0420\u041E\u0414\u041E\u041B\u0416\u0418\u0422\u042C"
 --- !u!1 &7821979737470358025
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,7 +2950,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 94c5bf98b47cfd24ab4b2a74920dd0d2, type: 3}
+    m_Font: {fileID: 12800000, guid: ee372e31142bf2d45a7b9f79807768d0, type: 3}
     m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
@@ -2961,4 +2962,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: "\u0412\u042B\u0425\u041E\u0414"
