@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
-    public TextMeshProUGUI textDisp;
+    public Text textDisp;
     [TextArea(3, 10)]
     public string[] sentences;
     public float typingSpeed;
@@ -22,7 +22,8 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        endingDialog = new[] {0, 5};/*на кокаой реплике останавливается диалог. 
+        //endingDialog = new[] {0, 5};
+        /*на какой реплике останавливается диалог. 
         То есть если у нас на данный момент прописанно только 5 реплик, 
         то первый диалог будет состоять из первых 2х реплик, а вротой из 3 последующих. 
         */

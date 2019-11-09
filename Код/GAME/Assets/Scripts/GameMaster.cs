@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -82,14 +83,19 @@ public class GameMaster : MonoBehaviour
 
         //перемещение мишки на позицию респавна и восстановление хп
         if (!bearFollower.activeSelf) bearFollower.SetActive(true);
-        bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
         bearScript = FindObjectOfType<BearFollower>();
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+            bearFollower.transform.position = new Vector3(26, -1, 0);
+        else
+        {
+            bearFollower.transform.position = new Vector3(spawnPoint.position.x + 2, spawnPoint.position.y, spawnPoint.position.z);
+            if (!bearScript.isFacingRight) bearScript.Flip();
+        }
         bearScript.health = 100f;
         bearScript.UpdateHealth();
         bearScript.isAttacking = false;
         bearScript.attackHitBox.SetActive(false);
         bearScript.movementBlock = false;
-        if (!bearScript.isFacingRight) bearScript.Flip();
     }
     private void Start()
     {
@@ -102,7 +108,7 @@ public class GameMaster : MonoBehaviour
     {
         scoreUI.SetActive(false);
         lifeUI.SetActive(false);
-        gameOverScoreText.text = string.Format("score: {0}", score);
+        gameOverScoreText.text = string.Format("Счет: {0}", score);
         gameOverUI.SetActive(true);
         Destroy(bearFollower);
         Destroy(player);

@@ -46,7 +46,7 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         scoreUI.SetActive(false);
-        scoreText.text = string.Format("score: {0}", GameMaster.Gm.Score);
+        scoreText.text = string.Format("Счет: {0}", GameMaster.Gm.Score);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;

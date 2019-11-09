@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class WordsOfTheAuthor : MonoBehaviour
 {
-    public TextMeshProUGUI textDisp;
+    public Text textDisp;
     [TextArea(3, 10)]
     public string[] sentences;
 
