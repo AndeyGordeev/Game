@@ -14,11 +14,13 @@ public class Dialog : MonoBehaviour
     private int numberWords;
 
     public GameObject nextButt;
-    private GameObject player;
+    private Play player;
+    private BearFollower bear;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = FindObjectOfType<Play>();
+        bear = FindObjectOfType<BearFollower>();
     }
 
     private void FixedUpdate()
@@ -45,5 +47,6 @@ public class Dialog : MonoBehaviour
         textDisp.text = "";
         nextButt.SetActive(false);
         Time.timeScale = 1f;
+        bear.canMove = true;
     }
 }
