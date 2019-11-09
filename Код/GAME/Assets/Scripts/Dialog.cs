@@ -8,13 +8,10 @@ public class Dialog : MonoBehaviour
     public TextMeshProUGUI textDisp;
     [TextArea(3, 10)]
     public string[] sentences;
-    public float typingSpeed;
 
     public GameObject[] pointDialog;
-    public int[] endingDialog;
 
-    private int id;
-    private int numberDialog;
+    private int numberWords;
 
     public GameObject nextButt;
     private GameObject player;
@@ -22,23 +19,18 @@ public class Dialog : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        endingDialog = new[] {0, 5};/*на кокаой реплике останавливается диалог. 
-        То есть если у нас на данный момент прописанно только 5 реплик, 
-        то первый диалог будет состоять из первых 2х реплик, а вротой из 3 последующих. 
-        */
     }
 
     private void FixedUpdate()
     {
-        if (pointDialog.Length > numberDialog)
+        if (pointDialog.Length > numberWords)
         {
-            if (player.transform.position.x >= pointDialog[numberDialog].transform.position.x - 0.5 && player.transform.position.x <= pointDialog[numberDialog].transform.position.x + 0.5)
+            if (player.transform.position.x >= pointDialog[numberWords].transform.position.x - 0.5 && player.transform.position.x <= pointDialog[numberWords].transform.position.x + 0.5)
             {
-                textDisp.text = sentences[id];
+                textDisp.text = sentences[numberWords];
                 Time.timeScale = 0f;
                 nextButt.SetActive(true);
-                //StartCoroutine(Type());
-                numberDialog++;
+                numberWords++;
             }
         }
 
@@ -48,45 +40,10 @@ public class Dialog : MonoBehaviour
         }
     }
 
-    IEnumerator Type()
-    {
-        foreach(char letter in sentences[id].ToCharArray())
-        {
-            textDisp.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-    }
-
     public void NextSentence()
     {
+        textDisp.text = "";
         nextButt.SetActive(false);
-
-        if (id < endingDialog[numberDialog] - 1)
-        {
-            id++;
-            textDisp.text = "";
-            textDisp.text = sentences[id];
-            nextButt.SetActive(true);
-            //StartCoroutine(Type());
-
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            textDisp.text = "";
-            nextButt.SetActive(false);
-            id++;
-            BearActivate();
-        }
-    }
-
-    private void BearActivate()
-    {
-        if (numberDialog == 1)
-        {
-            BearFollower bear = FindObjectOfType<BearFollower>();
-            bear.canMove = true;
-            bear.Flip();
-        }
+        Time.timeScale = 1f;
     }
 }
