@@ -11,10 +11,13 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject gameOverUI;
     public GameObject pauseMenuUI;
-    public GameObject scoreUI;
+    public GameObject collectiblesUI;
+    public GameObject healthUI;
     [SerializeField]
     private Text scoreText;
-    public GameObject settingsMenu;
+    public GameObject settingsMenuUI;
+    public GameObject controlsMenuUI;
+    public GameObject keyBind;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +28,21 @@ public class PauseMenu : MonoBehaviour
             {
                 if (gameIsPaused)
                 {
-                    Resume();
+                    if (pauseMenuUI.activeSelf)
+                    {
+                        Resume();
+                    }
+                    else if (settingsMenuUI.activeSelf)
+                    {
+                        settingsMenuUI.SetActive(false);
+                        pauseMenuUI.SetActive(true);
+                    }
+                    else if (controlsMenuUI.activeSelf)
+                    {
+                        keyBind.GetComponent<KeyBind>().SaveControls();
+                        controlsMenuUI.SetActive(false);
+                        settingsMenuUI.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -37,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        scoreUI.SetActive(true);
+        collectiblesUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
@@ -45,7 +62,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
-        scoreUI.SetActive(false);
+        collectiblesUI.SetActive(false);
         scoreText.text = string.Format("Счет: {0}", GameMaster.Gm.Score);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
