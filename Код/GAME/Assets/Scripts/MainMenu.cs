@@ -16,8 +16,11 @@ public class MainMenu : MonoBehaviour
         for (int i = 10; i > -1; i--)
         {
             GameObject.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f, i * 0.1f);
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(.1f);
         }
+        GameObject.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.9f);
+        yield return new WaitForSeconds(.3f);
+        GameObject.Find("Background").GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
