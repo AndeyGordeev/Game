@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 4.unity
     guid: b75ba209d12fa2d4d87093fdf8ae819e
   - enabled: 1
+    path: Assets/Scenes/Titer.unity
+    guid: 319a79f1736b05447a2deeb124c1a4a0
+  - enabled: 1
     path: Assets/Scenes/EndOfTheGame.unity
     guid: 6850fca66dd6b1245b86e6f18c73dd9c
   m_configObjects: {}
